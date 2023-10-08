@@ -1,3 +1,8 @@
-<h1>Hello World</h1>
+<h3>PayPal Payment Demo</h3>
 
 <div #paymentRef></div>
+
+<div *ngIf="showId">
+  <h2>Transaction Id : {{ id }}</h2>
+  <h2>Payment Status : {{ status }}</h2>
+</div>

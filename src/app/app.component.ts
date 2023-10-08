@@ -8,6 +8,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class AppComponent {
   title = 'payment-demo';
   amount = 40;
+  id: number = 0;
+  showId: Boolean = false;
+  status: string = '';
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
@@ -37,8 +40,10 @@ export class AppComponent {
         onApprove: (data: any, actions: any) => {
           return actions.order.capture().then((details: any) => {
             if (details.status === 'COMPLETED') {
+              this.showId = true;
               console.log('completed status', details);
-              // this.payment.transactionID = details.id;
+              this.id = details.id;
+              this.status = details.status;
               // this.router.navigate(['confirm']);
             }
           });
